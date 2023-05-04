@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://cloudprojectfinal.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_b54485580566488da13a7c32cc91bfda }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_4ee7b3960b654b61bce7421ab5e49888 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0aff0ae4c76b4d2da0cc5a4873719b65 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e3dc65e2643245c18d82e76257e8f9c4 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: cloudprojectfinal.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b54485580566488da13a7c32cc91bfda }}/cloudprojectfinal.azurecr.io/scorepredict:${{ github.sha }}
+        tags: cloudprojectfinal.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0aff0ae4c76b4d2da0cc5a4873719b65 }}/cloudprojectfinal/cloudprojectfinal.azurecr.io/scorepredict:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'scorepredict'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2b21ad1f2e494131ab660a012f131731 }}
-        images: 'cloudprojectfinal.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b54485580566488da13a7c32cc91bfda }}/cloudprojectfinal.azurecr.io/scorepredict:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9b4555a01c834ed5b320e41c267e6b3d }}
+        images: 'cloudprojectfinal.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0aff0ae4c76b4d2da0cc5a4873719b65 }}/cloudprojectfinal/cloudprojectfinal.azurecr.io/scorepredict:${{ github.sha }}'
